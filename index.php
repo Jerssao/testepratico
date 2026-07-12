@@ -25,6 +25,29 @@ if (!isset($_SESSION['tarefas'])) {
 
     <hr>
     <h2>Lista de tarefas</h2>
+    <pre>
+<?php
+print_r($_SESSION['tarefas']);
+?>
+</pre>
+    <?php 
+    
+    if (empty($_SESSION['tarefas']))
+        echo "<p>Nenhuma tarefa cadastrada</p>";
+    else {
+        foreach ($_SESSION['tarefas'] as $tarefa) {
+            echo "<p>" . $tarefa['titulo'] . "</p>";
+            if ($tarefa['concluida']) {
+                echo "<p>Concluída</p>";
+            } else {
+                echo "<p>pendente</p>";
+            }
+        }
+    }
+    //tentar deixar em uma linha só depois ex: "tarefa x - concluida"
+
+    ?>
+
 
 </body>
 </html>
