@@ -20,7 +20,7 @@ require_once 'funcoes.php';
     <form action="salvar.php" method="POST">
         <label for="tarefa">Nova tarefa:</label>
         <br>
-        <input type="text" name="titulo" id="titulo" placeholder="informe a tarefa" required>
+        <input type="text" name="titulo" id="titulo" placeholder="descreva a tarefa" required>
 
         <button type="submit">Salvar</button>
     </form>
@@ -28,13 +28,20 @@ require_once 'funcoes.php';
     <hr>
     <h2>Lista de tarefas cadastradas</h2>
 
-
-    <pre>
+<pre>
 <?php
 listarTarefas();
 ?>
 </pre>
-   
+<h2>Resumo</h2>
+
+ <?php
+    $resumo = resumo($_SESSION['tarefas']);
+
+    echo "Total: " . $resumo['total'] . "\n";
+    echo "Pendentes: " . $resumo['pendentes'] . "\n";
+    echo "Concluídas: " . $resumo['concluidas'] . "\n";
+?>
 
 
 </body>
